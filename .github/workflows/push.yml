@@ -18,3 +18,9 @@ jobs:
 
       - name: build
         run: make docker-build-prod
+
+      - name: docker login
+        run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+
+      - name: docker push
+        run: make docker-push
