@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: debug
+        run: echo ${{secrets.HEXLET_ID}}
+
       - name: test
         run: make test
 
