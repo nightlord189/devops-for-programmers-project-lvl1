@@ -15,8 +15,15 @@ docker-run-prod:
 docker-push:
 	docker push $(prod_tag)
 
+clean:
+	docker rm -f $$(docker ps -a -q)
+	docker volume rm $$(docker volume ls -q)
+
+install:
+	docker-compose run app npm install
+
 test:
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 start:
-	docker-compose up
+	docker-compose up --abort-on-container-exit

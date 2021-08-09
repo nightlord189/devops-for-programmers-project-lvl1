@@ -3,9 +3,16 @@ version: '3.7'
 
 services:
   app:
-    command: ["npm", "start"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nightlord189/devops-for-programmers-project-lvl1:dev
+    command: sh -c "npm install && npm start"
+    volumes:
+      - ./app:/app
     ports:
       - 8080:8080
+
   caddy:
     image: caddy:2.4.3
     ports:
