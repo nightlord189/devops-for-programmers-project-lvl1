@@ -8,7 +8,7 @@
 
 + run tests: `make test`
 
-+ run app in development mode: `make start-dev`
++ run app in development mode: `make start`
 
 + clean volumes & containers: `make clean`
 
