@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: debug
-        run: echo ${{secrets.HEXLET_ID}}
-
       - name: test
         run: make test
 
@@ -27,3 +24,12 @@ jobs:
 
       - name: docker push
         run: make docker-push
+
+      - name: Set up secret file
+        env:
+          HEXLET_ID: ${{ secrets.HEXLET_ID }}
+        run: |
+          echo $HEXLET_ID >> secrets.txt
+
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
